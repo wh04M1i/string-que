@@ -37,3 +37,50 @@ void display(char queue[][80],int rear,int front){
 
 
 }
+int main()
+{
+      char data[80];
+      int front, rear, reply,size,x;
+      int ch;
+      printf("Enter the size of the queue: ");
+      scanf("%d",&size);
+      char queue[size][80];
+      front = rear = -1;
+      printf("\tMenu");
+      printf("\n 1. Insert String in a Queue");
+      printf("\n 2. Delete String from a Queue");
+      printf("\n 3. Display");
+      printf("\n 4. Exit\n");
+      while(1)
+      {
+            printf("Choose operation : ");
+            scanf("%d", &ch);
+            switch(ch)
+            {
+                  case 1 :
+                        printf("\nEnter string : ");
+                        scanf("%s",data);
+                        reply = insq(queue, &rear, data,size);
+                        if(reply == -1 )
+                              printf("\nQueue is Full \n");
+                        else
+                              printf("\n'%s' is inserted in queue.\n\n",data);
+                        break;
+                  case 2 :
+                        reply = delq(queue, &front, &rear, data);
+                        if( reply == -1 )
+                              printf("\nQueue is Empty \n");
+                        else
+                              printf("\nDeleted String from Queue is : %s\n", data);
+                              printf("\n");
+                        break;
+                  case 3 :
+                  display(queue,rear,front);
+                              printf("\n");
+                        break;
+                  case 4 :exit(0);
+                  default: printf("Invalid operation \n");
+            }
+      }
+      return 0;
+}
