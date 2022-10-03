@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int insq(char queue[][80], int *rear, char data[80],int size)
+{
+      if(*rear == size -1)
+            return(-1);
+      else
+      {
+            *rear = *rear + 1;
+            strcpy(queue[*rear], data);
+            return(1);
+      }
+}
+int delq(char queue[][80], int *front, int *rear, char data[80])
+{
+      if(*front == *rear)
+            return(-1);
+      else
+      {
+            (*front)++;
+            strcpy(data, queue[*front]);
+            return(1);
+      }
+}
+void display(char queue[][80],int rear,int front){
+   if(rear!=front)
+    {
+        printf("\n The elements in Queue\n");
+        for(int i=rear; i>front; i--)
+           puts(queue[i]);
+    }
+    else
+    {
+        printf("\n The Queue is empty");
+    }
+
+
+}
